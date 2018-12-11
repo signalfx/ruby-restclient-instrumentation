@@ -2,6 +2,11 @@
 
 This gem provides instrumentation for RestClient requests.
 
+## Supported versions:
+
+- MRI 2.0 and newer
+- rest-client 2.0.0 and newer
+
 ## Installation
 
 Add this line to your application's Gemfile:
