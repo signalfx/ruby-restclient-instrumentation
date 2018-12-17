@@ -29,7 +29,8 @@ module RestClient
 
             result = nil
 
-            span = ::RestClient::Instrumentation.tracer.start_span("restclient.execute", tags: tags)
+            scope = ::RestClient::Instrumentation.tracer.start_active_span("restclient.execute", tags: tags)
+            span = scope.span
             begin
               # make this available to the transmit method to inject the context
               @span_context = span.context
@@ -45,7 +46,8 @@ module RestClient
               # pass this along for the original caller to handle
               raise error
             ensure
-              span.finish()
+              span.finish if span
+              scope.close if scope
             end
 
             result
