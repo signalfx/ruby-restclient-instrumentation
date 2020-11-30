@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'restclient'
 require 'restclient/instrumentation'
-require 'opentracing_test_tracer'
+require 'signalfx_test_tracer'
 require 'webmock/rspec'
 
 RSpec.configure do |config|

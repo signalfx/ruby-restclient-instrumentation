@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    restclient-instrumentation (0.1.0)
+    signalfx-restclient-instrumentation (0.1.0)
       opentracing (~> 0.3)
 
 GEM
@@ -25,9 +25,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
     netrc (0.11.0)
-    opentracing (0.4.3)
-    opentracing_test_tracer (0.1.1)
-      opentracing
+    opentracing (0.5.0)
     public_suffix (3.0.3)
     rake (10.5.0)
     rest-client (2.0.2)
@@ -48,6 +46,8 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     safe_yaml (1.0.4)
+    signalfx_test_tracer (0.1.4)
+      opentracing
     thor (0.20.3)
     unf (0.1.4)
       unf_ext
@@ -62,13 +62,13 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal (~> 2.2)
-  bundler (~> 1.16)
-  opentracing_test_tracer (~> 0.1)
+  bundler (~> 2.1)
   rake (~> 10.0)
   rest-client
-  restclient-instrumentation!
   rspec (~> 3.0)
+  signalfx-restclient-instrumentation!
+  signalfx_test_tracer (~> 0.1)
   webmock (~> 3.4.2)
 
 BUNDLED WITH
-   1.16.5
+   2.1.4

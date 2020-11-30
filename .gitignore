@@ -1,3 +1,6 @@
+/*.gem
+/gemfiles/vendor/
+/vendor/
 /.bundle/
 /.yardoc
 /_yardoc/

@@ -12,7 +12,7 @@ This gem provides instrumentation for RestClient requests.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'restclient-instrumentation'
+gem 'signalfx-restclient-instrumentation'
 ```
 
 And then execute:
@@ -21,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install restclient-instrumentation
+    $ gem install signalfx-restclient-instrumentation
 
 ## Usage
 
