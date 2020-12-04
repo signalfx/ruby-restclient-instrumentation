@@ -42,6 +42,30 @@ RSpec.describe RestClient::Instrumentation do
       expect(response.code).to eq 200
     end
 
+    context 'when execute raises an error' do
+      it 'records error on the span' do
+        expected_error = RestClient::InternalServerError.new
+        allow_any_instance_of(RestClient::Request).to receive(:execute_original).and_raise(expected_error)
+
+        begin
+          RestClient::Request.execute(method: :get, url: url)
+        rescue => e
+        end
+        expect(tracer.spans.count).to eq 1
+        expected_tags = {
+          'span.kind' => 'client',
+          'http.method' => 'get',
+          'http.url' => 'http://www.example.com/',
+          'http.status_code' => '',
+          'error' => true,
+          'sfx.error.kind' => 'RestClient::InternalServerError',
+          'sfx.error.message'=> 'Internal Server Error',
+          'sfx.error.stack'=> expected_error.backtrace.join('\n') 
+        }
+        expect(tracer.spans.last.tags).to eq expected_tags
+      end
+    end
+
     context 'when execute is called' do
       before do
         allow_any_instance_of(RestClient::Request).to receive(:execute_original).and_return(response)
